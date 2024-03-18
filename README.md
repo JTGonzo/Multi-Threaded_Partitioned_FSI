@@ -1,1 +1,1 @@
-# Parrallelized_Partitioned_FSI
+# Multi-Threaded_Partitioned_FSI
