@@ -1,6 +1,6 @@
 loca = pwd;
 
-cd ../../stenglib/
+cd ../../../stenglib/
 
 s = pwd;
 addpath([s '/Tensor']);
