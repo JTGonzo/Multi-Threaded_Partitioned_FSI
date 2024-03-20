@@ -10,8 +10,6 @@ tf        = DATA.Fluid.time.tf;
 t         = DATA.Fluid.time.t0;
 k_t       = 0;
 
-vtk_filename = [];
-
 %% Initialize variable space
 % read initial velocity condition
 v0  = [];

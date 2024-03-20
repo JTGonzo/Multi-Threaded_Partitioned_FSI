@@ -9,13 +9,6 @@ If the reader is still compelled to experiment I encourgae them to do so, howeve
 For detailed configuartion, installation and operation instructions, in particular for the redbKIT based solvers, please follow the steps contained in the brief [INSTALL.md](INSTALL.md) file provided.
 
 ## Strongly Coupled Partitioned FSI Solver
-
-<ins>***2D Rigid-Body FSI solver***</ins><br>
-This partitioned FSI scheme was developed at the [University of British Columbia](https://cml.mech.ubc.ca/) by the graduate students of my superviosor [Dr. Rajeev Jaiman](https://scholar.google.com/citations?user=iofAU68AAAAJ&hl=en&oi=ao). It uses stabilized streamline-upwind Petrov-Galerkin (SUPG) P<sub>m</sub>/P<sub>m-1</sub>/P<sub>m</sub> iso-parametric finite elements to satisfy the inf–sup condition of the fluid domain equations. The solid domain is simply modelled as an elastically mounted rigid cylinder that is free to translate along its two directional degrees of freedom. Temporal discretization is achieved via the generalized-&alpha; method for each set of domain equations.
-
-Further reading on this approach can be found in 
->[**[RKJ17] L. Zhong, W. Yao, K. Yag, R. Jaiman, B. C. Khoo,. On the vortex-induced oscillations of a freely vibrating cylinder in the vicinity of a stationary plane wall **, Journal of Fluids and Structures, 2016.](https://doi.org/10.1016/j.jfluidstructs.2016.07.001)
-
 <ins>***2D & 3D redbKIT-based solvers***</ins><br>
 This repository contains 2D and 3D high-fidelity computational fluid-structure interaction solvers built (mainly) in MATLAB. They are primarily focused on solving two-field problems in a partitioned fashion, where the incompressible Navier-Stokes equations - written in the Arbitrary Lagrangian Eulerian (ALE) form - are coupled with the nonlinear elastodynamics structural equations. For 2D FSI problems the user has the option to choose either a linear elastic constitutive material model for the structural mechanics solver (**2D_Part_FSI_LE**) or a nonlinear St. Venant Kirchhoff material model (**2D_Part_FSI_SVK**). For 3D FSI problems, the user can additionally choose a nearly-incompressible NeoHookean constitutive material model for the structural mechanics solver (**3D_Part_FSI_NH**). 
 

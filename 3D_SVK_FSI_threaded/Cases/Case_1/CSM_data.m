@@ -85,8 +85,7 @@ data.Preconditioner.type         = 'None'; % AdditiveSchwarz, None, ILU
 %% Simulation time settings
 data.time.t0         = 0;
 data.time.dt         = 0.0001;
-pp = data.time.dt;
-data.time.tf         = pp* 1000; 
+data.time.tf         = 0.1; 
 data.time.gamma      = 1/2;
 data.time.beta       = 1/4;
 data.time.alpha_m    = 0;

@@ -3,22 +3,25 @@
 %%%%%% convergence/extrapolation schemes and accleration method  %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fixed-Point iteration parameters
-Couple.rtol = 1e-4;                 %| relative residual error
+Couple.rtol = 1e-5;                 %| relative residual error
 Couple.imin = 1;                    %| min number of fix-point iterations
-Couple.imax = 50;                   %| max number of fix-point iterations
-Couple.maxSteps = tf/dt;            %| number of time steps
+Couple.imax = 100;                  %| max number of fix-point iterations
+Couple.small = 1e-10; 				%| absolute error
+Couple.maxSteps = int32(tf/dt);     %| number of time steps
+Couple.cvg_type = 1;				%| rel_resid_error = 1; abs_displacement_error = 2; abs_interface_traction_error =3	; max_coupling_iterations = 4
 Couple.probeOutFreq = 1;            %| physical variable output frequency
 Couple.out = 1;                     %| output frequency for coupling data
-Couple.probeOutFreq2 = 1;            %| physical variable output frequency
+Couple.probeOutFreq2 = 10;          %| physical variable output frequency
 
 % Convergence acceleration parameters
-algorithm = 'AndersonAcceleration';
-Couple.omegaMax = 0.75; %0.1        %| relaxation factor
-Couple.reuse = 10;                   %| time-steps to reuse
-Couple.small = 1e-10;               
+algorithm = 'genbroyden';
+Couple.omegaMax = 0.5;              %| relaxation factor
+Couple.reuse = 8;                   %| time-steps to reuse (Anderson Acc.)
+Couple.mv_limit = 40;           	%| time-steps to reuse (MVLS method)
 Couple.filter = 2;                  %| QR1 = 1; NM = 2; POD =3
 Couple.count = zeros(1,3);          %| filtered/dropped columns
 Couple.extra = 2;                   %| Const = 1; Linear = 2; Legacy =3; Quadratic =4; Cubic =5;
+Couple.lindep = 1e-5;               %| filtering threshold
 
 %% Initialize fixed-point iteration variables and data output files
 r = zeros(length(uS),1);              % initial displacement residual 
@@ -62,24 +65,21 @@ switch lower(algorithm)
     case 'genbroyden'
         Acc_flag = 6;
         Couple.reuse = 0;
-        model = GB(Couple.small, Couple.reuse, Couple.count, problemString); %GB3
+        model = GB(Couple.lindep, Couple.reuse, Couple.filter, Couple.count, problemString); %GB3
     case 'andersonacceleration'
         Acc_flag = 7;
-        Couple.lindepen = 1e-4;     %| filtering threshold
-        model = AA(Couple.lindepen, Couple.reuse, Couple.filter, Couple.count, problemString);
+        model = AA(Couple.lindep, Couple.reuse, Couple.filter, Couple.count, problemString);
     case 'mvls'
         Acc_flag = 8;
-        limit = 20;
-        model = MVLS(Couple.small, limit, Couple.count, problemString);
+        model = MVLS(Couple.lindep, Couple.mv_limit, Couple.filter, Couple.count, problemString);
     case 'mvlss'
         Acc_flag = 9;
-        limit = 20;
-        model = MVLSS(Couple.small, limit, Couple.count, problemString);
+        model = MVLSS(Couple.lindep, Couple.mv_limit, Couple.filter, Couple.count, problemString);
     otherwise
         error('Unknown algorithm');
 end
 
 %% Additional functional tools (step's inital variable approx. / convergence criteria)
 extrapolator = Extrapolator(zeros(length(MESH.Solid.Gamma_global),1), Couple.extra);
-convergence = Convergence(Couple.rtol,Couple.imin,Couple.imax,Couple.maxSteps,Couple.small,Couple.out, Acc_flag, problemString);
+convergence = Convergence(Couple.rtol,Couple.imin,Couple.imax,Couple.maxSteps,Couple.small,Couple.out, Acc_flag, Couple.cvg_type, problemString);
 objects = {convergence,extrapolator,model};

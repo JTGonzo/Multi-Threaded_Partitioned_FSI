@@ -5,18 +5,17 @@ Instructions - rebkit-based solvers
 Pre-requisites
 --------------
 
-For the basic installation, you need:<br>
+For the basic installation with sped up matrix assembly via multithreading, you need:<br>
 -> a reasonably recent version of Matlab (anything above R2017a should be fine)<br>
--> a supported C compiler, see e.g. http://it.mathworks.com/support/compilers/R2016a/<br>
-   (gcc on Unix and gcc/clang on Mac OS X work smoothly)
-
+-> a C compiler with OpenMP support, see e.g. http://it.mathworks.com/support/compilers/R2016a/
+   (gcc is tested for both Unix and Mac OS X)
 
 Basic Installation
 ------------------
 
 Open Matlab and navigate to the root folder of the downloaded solver that you will be using (e.g. **3D_Part_FSI_NH**). Then type 
 
->> make
+>> make(1)
 
 to compile the C-assembly routines and "mexify" some other files.
 
@@ -82,24 +81,3 @@ These two files are the primary locations where you define all the domain specif
 5. temporal and spatially varying properties
 6. time step/integration properties
 7. aerodynamic forces output variables
-
-===========================================
-Instructions - 2D rigid-body FSI solver
-===========================================
-
-Pre-requisites
---------------
-
-For the basic installation, you just need a reasonably recent version of Matlab (anything above R2015a should be fine). There are no additional compiler or system requirements. 
-
-
-Running the Example Provided 
-------------------
-
-Open Matlab and navigate to the root folder of the downloaded solver then type 
-
->> main_FSI
-
-doing this begins the example simulation provided. 
-
-The simulation configuration is output periodically as a series of *.plt* files, and the displacement and interface aerodynamic force results experienced by the rigid body are printed to a local *.oisd* file in the folder. 

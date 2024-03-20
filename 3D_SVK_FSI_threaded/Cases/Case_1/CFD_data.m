@@ -85,8 +85,7 @@ data.Preconditioner.type         = 'None'; % AdditiveSchwarz, None, ILU
 data.time.BDF_order  = 2;
 data.time.t0         = 0;
 data.time.dt         = 0.0001;
-tt = data.time.dt;
-data.time.tf         = tt*1000;
+data.time.tf         = 0.1;
 data.time.nonlinearity  = 'semi-implicit';
 
 %% Lift/Drag output options

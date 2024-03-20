@@ -90,11 +90,10 @@ data.Preconditioner.type         = 'None'; % AdditiveSchwarz, None, ILU
 data.time.BDF_order  = 2;
 data.time.t0         = 0;
 data.time.dt         = 0.0001; 
-data.time.tf         = 0.02;
+data.time.tf         = 0.1;
 data.time.nonlinearity  = 'semi-implicit';
 
 %% Lift/Drag output options
 data.Output.DragLift.computeDragLift = 1;
 data.Output.DragLift.factor          = 1/(1*1e-3*1^2*1);
 data.Output.DragLift.flag            = [3];
-data.Output.DragLift.filename        = 'Results/AeroForces.txt';

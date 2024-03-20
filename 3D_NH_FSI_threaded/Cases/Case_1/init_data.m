@@ -20,7 +20,7 @@ MESH.dim  = dim; % problem dimensionality
 
 %% Load problem mesh and element properties
 % Solid mesh
-%load('Tube_S_fine.mat')
+%load('Tube_S.mat')
 load('../../../Geometry_Files/Tube_MATS/TB_3DL1T1Z1_S.mat');
 meshSolid.boundaries = boundaries;
 meshSolid.elements = elements;
@@ -28,7 +28,7 @@ meshSolid.vertices = vertices;
 meshSolid.rings = rings;
 
 % Fluid mesh
-%load('Tube_F_fine.mat')
+%load('Tube_F.mat')
 load('../../../Geometry_Files/Tube_MATS/TB_3DL1T1Z1_F.mat');
 meshFluid.boundaries = boundaries;
 meshFluid.elements = elements;

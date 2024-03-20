@@ -3,14 +3,14 @@
 [~,~,~] = mkdir('Results');
 
 wrkDir = './' ;
-problemString = 'Tube_3DL1T1Z1'; 
+problemString = 'TB_3DL1T1Z1'; 
 addpath('../../')
 addpath('../../C_Files/')
 addpath('../../Mappers/')
 addpath('../../Accelerators/')
 addpath('../../Accelerators/Filters/')
 addpath('../../import_export_time/')
-vtk_filename = 'Figures/Tube_3DL1T1Z1'; % []; % 
+vtk_filename = 'Figures/TB_3DL1T1Z1'; % []; % 
 vtk_filename2 = []; 
 
 t = [];

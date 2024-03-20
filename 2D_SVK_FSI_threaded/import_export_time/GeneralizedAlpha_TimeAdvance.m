@@ -83,6 +83,22 @@ classdef GeneralizedAlpha_TimeAdvance < handle
             dU  = obj.M_dU;
         end
         
+        function [ Us, dUs, d2Us, Csi, rhs ] = retrive( obj ) % no current mesh motion             
+            Us = obj.M_U;
+            dUs = obj.M_dU;
+            d2Us = obj.M_d2U;
+            Csi = obj.M_Csi;
+            rhs = obj.M_rhs;            
+        end
+        
+        function obj = restart( obj, Us, dUs, d2Us, Csi, rhs) % no current mesh motion             
+            obj.M_U = Us;
+            obj.M_dU = dUs;
+            obj.M_d2U = d2Us;
+            obj.M_Csi = Csi;
+            obj.M_rhs = rhs;            
+        end
+        
         %% RhsContribute
         function Rhs = RhsContribute( obj )            
             Rhs = obj.M_rhs;            

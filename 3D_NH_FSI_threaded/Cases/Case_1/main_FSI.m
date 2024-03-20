@@ -68,7 +68,8 @@ while ( t < tf )
         else
              [MESH, d_Fn_t, ALE_velocity] = movemesh(MESH, Fluid_ReferenceNodes, Solid_Extension, TimeAdvanceS, uS, d_Fn, dim, dt, nLiter, ALE_velocity, Couple);
         end
-        
+
+		uF_l = uF;        
         trac_l = trac;
         
         % solve the Navier-Stokes equations (whatever formulation)
@@ -79,6 +80,7 @@ while ( t < tf )
         
         % compute the FP displacement solution residual
         r =  uS_t - uS;
+		rF = uF_l - uF; 		
         rT = trac_l - trac;
         
         % Retain iteration residual data
@@ -97,7 +99,7 @@ while ( t < tf )
         end
         
         % Check convergence criteria
-        convergence.add(r,rT(MESH.Fluid.Gamma_global));
+        convergence.add(r,r(MESH.Solid.Gamma_global),rF(MESH.Fluid.Gamma_global),rF(dim*MESH.Fluid.numNodes+p_dofs),rT(MESH.Fluid.Gamma_global));
         if (convergence.is_satisfied())
             break;
         end                
@@ -152,10 +154,6 @@ while ( t < tf )
     iter_time = toc(iter_time);
     fprintf('\n-------------- iter time: %3.2f s -----------------',iter_time);
 end
+
 % close all output files
-fclose(fileDragLift);
-fclose(fileId1);
-fclose(fileId2);
-fclose(fileId3);
-convergence.closefile;
-model.closefile;
+fclose('all'); 

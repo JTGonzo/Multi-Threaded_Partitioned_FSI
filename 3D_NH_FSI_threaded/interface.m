@@ -1,7 +1,7 @@
 function [MESH] = interface(DATA, MESH, FE_SPACE_v, FE_SPACE_p, FE_SPACE_s, mapper, dim)
 %% Generates mapping between solid and fluid interface 
-%[MESH] = imap(DATA, MESH);     % assumes co-location of fluid/solid interface nodes
-[MESH] = imap2(DATA, MESH, mapper);
+[MESH] = imap(DATA, MESH);     % assumes co-location of fluid/solid interface nodes
+%[MESH] = imap2(DATA, MESH, mapper);
 
 %% Define fluid and solid interface arrays for solution space
 for k = 1 : dim
