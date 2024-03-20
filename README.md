@@ -6,7 +6,7 @@ If the reader is still compelled to experiment I encourgae them to do so, howeve
 ## Download, Installation and Running
 -------
 
-For detailed configuartion, installion and operation instructions, in particular for the redbKIT based solvers, please follow the steps contained in the brief [INSTALL.md](INSTALL.md) file provided.
+For detailed configuartion, installation and operation instructions, in particular for the redbKIT based solvers, please follow the steps contained in the brief [INSTALL.md](INSTALL.md) file provided.
 
 ## Strongly Coupled Partitioned FSI Solver
 

@@ -102,4 +102,4 @@ Open Matlab and navigate to the root folder of the downloaded solver then type
 
 doing this begins the example simulation provided. 
 
-The simulation configuration is output periodically as a series of *.plt* file,s and the displacement and interface aerodynamic force results experienced by the rigid body are printed to a local *.oisd* file in the folder. 
+The simulation configuration is output periodically as a series of *.plt* files, and the displacement and interface aerodynamic force results experienced by the rigid body are printed to a local *.oisd* file in the folder. 
