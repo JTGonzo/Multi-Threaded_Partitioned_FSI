@@ -5,7 +5,7 @@ fontsize = 48;
 formats1pec = '%f';
 
 %% Load data
-addpath('../Results/')
+addpath('../Cases/Case_1/Results/')
 fileID1 = fopen('HC_2DL1T1Z1R2_iters.oisd','r');
 data2 = fscanf(fileID1,formats1pec);
 ts2 = data2(1:2:end-3); 

@@ -4,7 +4,7 @@ fontsize = 48;
 formatSpec = '%f';
 
 %% Load residual data
-addpath('../Results/')
+addpath('../Cases/Case_1/Results/')
 fileID1 = fopen('HC_2DL1T1Z1R2_residuals.txt','r');
 data1 = fscanf(fileID1,formatSpec);
 ts1 = data1(1:7:end-6); 

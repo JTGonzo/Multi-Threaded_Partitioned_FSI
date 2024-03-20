@@ -4,7 +4,7 @@ fontSize = 48;
 formatSpec = '%f';
 
 %% Load data
-addpath('../Results/')
+addpath('../Cases/Case_1/Results/')
 %fileID = fopen('TB_3DL1T1Z1_forces.txt','r');
 %fileID = fopen('TB_3DL1T1Z1_vel.othd','r');
 fileID = fopen('TB_3DL1T1Z1_disp.othd','r');
