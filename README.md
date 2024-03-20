@@ -62,7 +62,7 @@ For absolute clarity, the [**redbKIT**](https://github.com/redbKIT/redbKIT) tool
 
 These solvers, however, are of a monolthic construction and thus linearization of one set of domain equations with respect to the other must occur for the system of equations to be solvable. If the interested reader is more interested in the details of **partitioned** coupling, however, or would like to develop one of the respective domain solvers independently of the other domain they may find the tools found in this repository very useful.
 
-Lastly, for those readers seeking a more digestible version of the rebKIT-based monolthic FSI solvers or the individual (rebKIT-based) domain-specific solvers I have additionally compiled what I believe to be useful respources in the following repositories: 
+Lastly, for those readers seeking a more digestible version of the rebKIT-based monolthic FSI solvers or the individual (rebKIT-based) domain-specific solvers I have additionally compiled what I believe to be useful resources in the following repositories: 
   1. [Monolithic Fluid Structure Interaction solvers](https://github.com/JTGonzo/Monolithic_FSI)
   2. [Single Domain (CFD & CSM) solvers](https://github.com/JTGonzo/Single_Physics_Solvers)
 

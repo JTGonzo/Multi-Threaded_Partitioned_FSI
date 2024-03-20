@@ -34,14 +34,14 @@ Some basic post processing tools are also provided in the `Post Processing` fold
 
 Additional Example Simulations Provided 
 ------------------
-For each of the solvers there are additional example simulations provided that were used to validate the code against well established benchmarks found in the literature. To run these files the user just needs to replace the ***CFD_data.m, CSM_data.m, and .mat*** files currently in the root folder with the corresponding files found in the respective `Examples/*` folder.
+For each of the solvers there are additional example simulations provided that were used to validate the code against well established FSI benchmarks found in the literature. To run these files the user just needs to replace the ***CFD_data.m, CSM_data.m, and .mat*** files currently in the root folder with the corresponding files found in the respective `Examples/*` folder.
 
-Next, the user just has to update the `init_data.m` file as described below to instruct the solver which .mat files to import and what names to give to the output files. These new names given to the output files also naturally requires editting the post processing files when the time comes to import the new results. 
+Next, the user simply updates the `init_data.m` file as described below to instruct the solver which .mat files to import and what names to give to the output files. These new names given to the output files also naturally requires eventually editting the post processing files when the time comes to import the new results. 
 
 Running your own Simulation
 ------------------
 <ins>***Mesh and .MAT file generation***</ins><br>
-See this brief tutorial on how to set up the **.mat** files needed to perform your own simulations. These .mat files define the geometric/spatial properties of the problem you intend to investigate. Pay special attention to how you define and identify the boundary and interface surfaces for each of the respective domains. 
+See this brief [tutorial](MESHING.md) on how to set up the **.mat** files needed to perform your own simulations. These .mat files define the geometric/spatial properties of the problem you intend to investigate. Pay special attention to how you define and identify the boundary and interface surfaces for each of the respective domains. 
 
 <ins>***Editting init_data.m***</ins><br>
 The only adjustments that are needed in this file to run your own simulations are 
@@ -73,7 +73,7 @@ This file is where the user defines all the coupling parameters they'd like to u
 given that the optimal setting of these parameters (from a performance, complexity, and cost standpoint) can be highly problem dependent when tackling particularly challenging FSI problems I plan to post a short video soon instructing the user on how best to do so. Until then it is advised that the user keep the settings as is (apart from defining desired watchpoint IDs of course) especially so if the user is uninterested in the details of coupling and would just like to study the physics of an FSI problem itself. 
 
 <ins>***Editting NS_data.m and CSM_data.m***</ins><br>
-These two files are the primary locations where you define all the domain specific parameters needed for you unqiue problem. Parameters that you are able to set include: 
+These two files are the primary locations where you define all the domain specific parameters needed for your unqiue problem. Parameters that you are able to set include: 
 
 1. material properties 
 2. boundary conditions
