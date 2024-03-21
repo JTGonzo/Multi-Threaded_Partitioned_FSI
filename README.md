@@ -1,4 +1,4 @@
-![](readme_support/mok_white.gif)
+![](readme_support/mok_black.gif)
 
 # DISCLAIMER!!
 These codes were very recently uploaded (March 20th, 2024) from my system and have yet to be vetted for general distribution/use. I am currently working through commenting, cleaning and re-testing these solver which were put together approximately 1 year ago. Please allow me the next few weeks to clean up the codes so as to make them more instructive, easy to use, and bug-free. 
