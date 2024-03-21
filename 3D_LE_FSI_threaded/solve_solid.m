@@ -5,6 +5,7 @@ function [uS_t] = solve_solid(FE_SPACE_s, FE_SPACE_v, MESH, DATA, SolidModel, Ti
     incrNorm   = tol + 1;
     maxIter    = DATA.Solid.NonLinearSolver.maxit;
 
+
 %% Initialize iterated solid variable and increment     
     [~, ~, u_D]   =  CSM_ApplyBC([], [], FE_SPACE_s, MESH.Solid, DATA.Solid, t);
     dU            = zeros(MESH.Solid.numNodes*MESH.dim,1);  %| solution increment
@@ -34,6 +35,7 @@ function [uS_t] = solve_solid(FE_SPACE_s, FE_SPACE_v, MESH, DATA, SolidModel, Ti
         end
     end
 
+
     k = 1;    
     % compute internal solid forces
     F_in  = SolidModel.compute_internal_forces( (1 - TimeAdvanceS.M_alpha_f) * Us_k + TimeAdvanceS.M_alpha_f * uS_n );
@@ -60,7 +62,7 @@ function [uS_t] = solve_solid(FE_SPACE_s, FE_SPACE_v, MESH, DATA, SolidModel, Ti
     % iterate until the relative residual norm convergence condition is met
     while (k <= maxIter && incrNorm > tol && resRelNorm > tol)
         
-        % Solve the linearized system of equation for the deformation increment
+        % Solve the linearized system of equation for the deformation increment 
         dU(MESH.Solid.internal_dof) = C_STR \ F_STR;
         
         % update the iterated displacement solution

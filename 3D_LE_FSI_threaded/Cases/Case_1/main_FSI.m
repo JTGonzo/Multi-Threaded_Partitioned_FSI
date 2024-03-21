@@ -3,11 +3,12 @@
 % to solve specific FSI benchmarks in a Partitioned fashion for subsequent coupling analysis
 clear all; close all; clc;
 
+%profile on -nohistory
+
 %% Initialize problem and solver data 
 init_data;
 
 %% Build finite element meshes and initialize boundary conditions
-
 [MESH.Fluid, FE_SPACE_v, FE_SPACE_p] = build_F( dim, meshFluid.elements, meshFluid.vertices, meshFluid.boundaries, fem_F{1}, quad_order, DATA.Fluid, 'CFD', meshFluid.rings );
 [MESH.Solid, FE_SPACE_s ] = build_S( dim, meshSolid.elements, meshSolid.vertices, meshSolid.boundaries, fem_S, quad_order, DATA.Solid, 'CSM', meshSolid.rings );
 [FE_SPACE_g] = build_G( MESH.Fluid, fem_F{1}, dim, quad_order );%
@@ -30,6 +31,7 @@ init_couple;
 %% Initalize Geometry Jacobian
 [MESH, DATA, Solid_Extension] = meshjac(DATA, MESH, FE_SPACE_v, FE_SPACE_g, dim);
 
+%% Initialize Linear Solver
 tol        = DATA.Solid.NonLinearSolver.tol;
 maxIter    = DATA.Solid.NonLinearSolver.maxit;
 
@@ -67,7 +69,7 @@ while ( t < tf )
         else
              [MESH, d_Fn_t, ALE_velocity] = movemesh(MESH, Fluid_ReferenceNodes, Solid_Extension, TimeAdvanceS, uS, d_Fn, dim, dt, nLiter, ALE_velocity, Couple);
         end
-		
+
 		uF_l = uF;        
         trac_l = trac;
         

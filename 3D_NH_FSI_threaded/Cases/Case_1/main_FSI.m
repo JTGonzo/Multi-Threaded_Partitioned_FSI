@@ -1,14 +1,14 @@
 % This solver was largely built starting from the redbkit monolithic FSI code which was
 % deconstructed to its baseline elements, reassembled and added to (as needed), and used 
 % to solve specific FSI benchmarks in a Partitioned fashion for subsequent coupling analysis
-
 clear all; close all; clc;
+
+%profile on -nohistory
 
 %% Initialize problem and solver data 
 init_data;
 
 %% Build finite element meshes and initialize boundary conditions
-
 [MESH.Fluid, FE_SPACE_v, FE_SPACE_p] = build_F( dim, meshFluid.elements, meshFluid.vertices, meshFluid.boundaries, fem_F{1}, quad_order, DATA.Fluid, 'CFD', meshFluid.rings );
 [MESH.Solid, FE_SPACE_s ] = build_S( dim, meshSolid.elements, meshSolid.vertices, meshSolid.boundaries, fem_S, quad_order, DATA.Solid, 'CSM', meshSolid.rings );
 [FE_SPACE_g] = build_G( MESH.Fluid, fem_F{1}, dim, quad_order );%
@@ -31,6 +31,7 @@ init_couple;
 %% Initalize Geometry Jacobian
 [MESH, DATA, Solid_Extension] = meshjac(DATA, MESH, FE_SPACE_v, FE_SPACE_g, dim);
 
+%% Initialize Linear Solver
 tol        = DATA.Solid.NonLinearSolver.tol;
 maxIter    = DATA.Solid.NonLinearSolver.maxit;
 
@@ -119,7 +120,7 @@ while ( t < tf )
     
     % Extrapolate initial estimate for next time step
     extrapolator.add(uS(MESH.Solid.Gamma_global)); 
-    
+     
 %% Export Domain and Iteration Data 
    
     if (mod(k_t,Couple.probeOutFreq)==0)       

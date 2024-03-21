@@ -3,6 +3,7 @@ function [MESH] = imap(DATA, MESH)
 %% Import solid & fluid boundary info 
 dim            = MESH.dim;
 nodesS         = MESH.Solid.nodes;
+
 nodesF         = MESH.Fluid.nodes;
 boundariesS    = MESH.Solid.boundaries;
 boundariesF    = MESH.Fluid.boundaries;
@@ -39,7 +40,7 @@ for k = 1 : dim
     % initialize mapping vector sizes
     Interface_SFmap{k} = zeros(length(interfaceS_dofs{k}),1);
     Interface_FSmap{k} = zeros(length(interfaceF_dofs{k}),1);
-
+    
     % for the solid interface nodes find the index of the associated fluid interface nodes
     tmp = zeros(length(interfaceS_dofs{k}),1);
     parfor i = 1 : length(interfaceS_dofs{k})

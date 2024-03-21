@@ -38,7 +38,7 @@ for k = 1 : dim
     % initialize mapping vector sizes
     Interface_SFmap{k} = zeros(length(interfaceS_dofs{k}),1);
     Interface_FSmap{k} = zeros(length(interfaceF_dofs{k}),1);
-
+     
     %% New map without co-location assumption
     id_SF{k} = zeros(length(interfaceS_dofs{k}),length(interfaceF_dofs{k}));
     l_SF{k} = zeros(length(interfaceS_dofs{k}),length(interfaceF_dofs{k}));
@@ -72,7 +72,6 @@ for k = 1 : dim
         end
     end
     
-    % order the distance of the solid nodes from the fluid node
     for i = 1 : length(interfaceF_dofs{k})
         vecs = [l_FS{k}(i,:)', id_FS{k}(i,:)'];
         vec_or = sortrows(vecs,1);
@@ -126,4 +125,5 @@ MESH.Interface_FSmap =  Interface_SFmap;        %| fluid to solid map
 MESH.coeff_SFmap =  cSF;                        %| interp. coefficients for solid to fluid map
 MESH.coeff_FSmap =  cFS;                        %| interp. coefficients for fluid to solid map
 MESH.ALE_dirichlet   =  ALE_dirichlet;          % fluid domain nodes with fixed ALE boundary
+
 return

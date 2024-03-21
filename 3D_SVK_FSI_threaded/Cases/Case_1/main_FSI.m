@@ -128,10 +128,10 @@ while ( t < tf )
         fprintf(fileId1,'%d %d\n',k_t,nLiter);  
         
         % Export watchpoint physical data
-        fprintf(fileId2,'%d %d %d\n',t,uS(Wid,1),uS(MESH.Solid.numNodes+Wid,1));
+        fprintf(fileId2,'%d %d %d %d\n',t,uS(Wid,1),uS(MESH.Solid.numNodes+Wid,1),uS(2*MESH.Solid.numNodes+Wid,1));
         
         % Export watchpoint physical data
-        fprintf(fileId3,'%d %d %d\n',t,uF(WidF,1),uF(MESH.Fluid.numNodes+WidF,1));
+        fprintf(fileId3,'%d %d %d %d\n',t,uF(WidF,1),uF(MESH.Fluid.numNodes+WidF,1),uF(2*MESH.Fluid.numNodes+WidF,1));
         
         % Export lift and drag coefficients
         [~] = AeroForces(MESH, DATA, k_t, t, uF, C_NS, F_NS, FE_SPACE_v, FE_SPACE_p, dofs_drag, fileDragLift);

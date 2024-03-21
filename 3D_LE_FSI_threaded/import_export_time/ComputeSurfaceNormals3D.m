@@ -25,7 +25,7 @@ fprintf(message);
 
 %% check correct orientation (outward)
 % Uncomment the following lines if your mesh does not have outward normals
-
+%
 % faces    = faces';
 % elements = elements';
 % nodes = nodes';
