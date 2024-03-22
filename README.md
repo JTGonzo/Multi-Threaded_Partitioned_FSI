@@ -1,4 +1,4 @@
-![](readme_support/long_white.gif#gh-lightk-mode-only)
+![](readme_support/long_white.gif#gh-light-mode-only)
 ![](readme_support/long_black.gif#gh-dark-mode-only)
 
 # DISCLAIMER!!
